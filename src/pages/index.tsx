@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-
 import { SubscribeButton } from '../components/SubscribeButton';
 import { stripe } from '../services/stripe';
-
 import styles from './home.module.scss';
+
+
 
 interface HomeProps {
   product: {
@@ -38,7 +38,7 @@ export default function Home({ product }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const price = await stripe.prices.retrieve('price_1IVhtPEr8Nl1t46KAhq5JOHw')
+  const price = await stripe.prices.retrieve('price_1L2lmhEUj0igY1qPmYbNL8wL')
 
   const product = {
     priceId: price.id,

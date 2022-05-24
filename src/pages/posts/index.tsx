@@ -1,12 +1,12 @@
+import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Prismic from '@prismicio/client'
-import { RichText } from 'prismic-dom'
 import Link from 'next/link';
-
+import { RichText } from 'prismic-dom';
 import { getPrismicClient } from '../../services/prismic';
-
 import styles from './styles.module.scss';
+
+
 
 type Post = {
   slug: string;
@@ -47,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient()
 
   const response = await prismic.query([
-    Prismic.predicates.at('document.type', 'publication')
+    Prismic.predicates.at('document.type', 'posts')
   ], {
     fetch: ['publication.title', 'publication.content'],
     pageSize: 100,
